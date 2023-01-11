@@ -1,6 +1,12 @@
 CPPC = c++
 CPPFLAGS = -wall -werror -std=c++98
-SRCS = phonebook.cpp
+SRCS = 	Phonebook.cpp	\
+		Contact.cpp		\
+		main.cpp		\
+
+HEADER = Contact.hpp	\
+		 Phonebook.hpp	\
+
 PATH_OBJS = .objs
 
 OBJS = $(addprefix $(PATH_OBJS)/, $(SRCS:.cpp=.o))
@@ -11,7 +17,7 @@ NAME = phonebook
 
 all: $(NAME)
 
-$(PATH_OBJS)/%.o: %.cpp Makefile
+$(PATH_OBJS)/%.o: %.cpp Makefile $(HEADER)
 				 @mkdir -p $(PATH_OBJS)
 				 $(CPPC) $(CPPCFLAGS) -c $< -o $@
 
