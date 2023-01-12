@@ -33,34 +33,55 @@ std::string Contact::get_darkest_secret(void)
 	return(this->_darkest_secret);
 }
 
-std::string Contact::get_input(void)
+std::string Contact::get_input(std::string str)
 {
-	std::string str;
+	std::string input;
 
-	if (!std::getline(std::cin, str))
+	std::cout << str;
+	if (!std::getline(std::cin, input))
 		exit(1);
-	return (str);
+	while (input.empty())
+		input = get_input(str);
+	return (input);
 }
 
 void Contact::set_info(void)
 {
-	std::cout << "First name : ";
-	this->_first_name = get_input();
-	std::cout << "Last name : ";
-	this->_last_name = get_input();
-	std::cout << "Nickname : ";
-	this->_nickname = get_input();
-	std::cout << "Phone number : ";
-	this->_phone_number = get_input();
-	std::cout << "Darkest secret : ";
-	this->_darkest_secret = get_input();
+	this->_first_name = get_input("First name :");
+	this->_last_name = get_input("Last name : ");
+	this->_nickname = get_input("Nickname : ");
+	this->_phone_number = get_input("Phone number : ");
+	this->_darkest_secret = get_input("Darkest secret : ");
 }
 
-void Contact::print_info(void)
+std::string Contact::trim_info(std::string input)
 {
-	std::cout << this->_first_name << std::endl;
-	std::cout << this->_last_name << std::endl;
-	std::cout << this->_nickname << std::endl;
-	std::cout << this->_phone_number << std::endl;
-	std::cout << this->_darkest_secret << std::endl;
+	std::string str;
+
+	str = input.substr(0, 9);
+	str.push_back('.');
+	std::cout << std::setw(10) << str << "|";
+	return (str);
+}
+
+void Contact::print_info(int nb)
+{
+	std::cout << " -----------------------------------------------" << std::endl;
+	std::cout << "| " << nb << " |" ;
+	if (this->_first_name.size() >= 10)
+		trim_info(this->_first_name);
+	else
+		std::cout << std::setw(10) << this->_first_name << "|";
+	if (this->_last_name.size() >= 10)
+		trim_info(this->_last_name);
+	else
+		std::cout << std::setw(10) << this->_last_name << "|";
+	if (this->_nickname.size() >= 10)
+		trim_info(this->_nickname);
+	else
+		std::cout << std::setw(10) << this->_nickname << "|";
+	if (this->_phone_number.size() >= 10)
+		trim_info(this->_phone_number);
+	else
+		std::cout << std::setw(10) << this->_phone_number << "|" << std::endl;
 }

@@ -1,6 +1,7 @@
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 #include <iostream>
+#include <iomanip>
 
 class Contact{
 
@@ -23,9 +24,10 @@ public:
 	std::string get_darkest_secret(void);
 
 	//functions
-	std::string get_input(void);
+	std::string get_input(std::string str);
 	void		set_info(void);
-	void 		print_info(void);
+	void 		print_info(int nb);
+	std::string trim_info(std::string input);
 };
 
 #endif
