@@ -4,7 +4,7 @@ int main (int ac, char **av)
 {
    int  i;
    int j;
-   char c;
+   std::string	str;
 
    i = 1;
    if (ac == i)
@@ -14,12 +14,11 @@ int main (int ac, char **av)
        j = 0;
        while (av[i][j])
        {
-           c = std::toupper(av[i][j]);
-           std::cout << c;
+		   str.push_back(std::toupper(av[i][j]));
            j++;
        }
        i++;
    }
-   std::cout << std::endl;
+   std::cout << str << std::endl;
    return (0);
 }
