@@ -17,8 +17,9 @@ void print_welcome()
 int main ()
 {
 	std::string buff;
-	Phonebook inst;
-	Contact c;
+	Phonebook 	inst;
+	Contact 	c;
+
 	print_welcome();
 	while(true)
 	{

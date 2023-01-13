@@ -81,7 +81,10 @@ void Contact::print_info(int nb)
 	else
 		std::cout << std::setw(10) << this->_nickname << "|";
 	if (this->_phone_number.size() >= 10)
+	{
 		trim_info(this->_phone_number);
+		std::cout << std::endl;
+	}
 	else
 		std::cout << std::setw(10) << this->_phone_number << "|" << std::endl;
 }

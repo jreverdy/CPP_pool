@@ -8,7 +8,6 @@ Phonebook::Phonebook(void)
 
 Phonebook::~Phonebook(void)
 {
-
 }
 
 int	Phonebook::get_index(void)
@@ -44,18 +43,21 @@ void 	Phonebook::print_contact(int index)
 
 void 	Phonebook::search_contact(void)
 {
-	int i = 0;
-	int nb;
-	std::string str;
+	int			i = 0;
+	int 		nb;
+	std::string	str;
 
 	if (this->_nb_contact == 0)
+	{
 		std::cout << "Please add a contact if you want to find one" << std::endl;
+		return ;
+	}
 	while (i < this->_nb_contact)
 	{
 		this->_my_contact[i].print_info(i + 1);
 		i++;
 	}
-	std::cout << "Index : ";
+	std::cout << std::endl << "Index : ";
 	if (!std::getline(std::cin, str))
 		exit(1);
 	nb = std::atoi(str.c_str());
