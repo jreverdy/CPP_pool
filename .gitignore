@@ -30,3 +30,5 @@
 *.exe
 *.out
 *.app
+.idea
+CPP_00/ex01/phonebook
