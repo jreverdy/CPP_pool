@@ -20,7 +20,6 @@ public:
 	void	add_contact(void);
 	void 	search_contact(void);
 	void 	print_contact(int index);
-
 };
 
 #endif

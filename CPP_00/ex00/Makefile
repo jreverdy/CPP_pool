@@ -1,5 +1,5 @@
 CPPC = c++
-CPPFLAGS = -wall -werror -std=c++98
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
 SRCS = megaphone.cpp
 PATH_OBJS = .objs
 
@@ -13,10 +13,10 @@ all: $(NAME)
 
 $(PATH_OBJS)/%.o: %.cpp Makefile
 				 @mkdir -p $(PATH_OBJS)
-				 $(CPPC) $(CPPCFLAGS) -c $< -o $@
+				 $(CPPC) $(CPPFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-		 $(CPPC) $(OBJS) -o $(NAME)
+		 $(CPPC) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 		$(RM) $(PATH_OBJS)

@@ -1,11 +1,10 @@
 CPPC = c++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
-SRCS =	main.cpp		\
-		Zombie.cpp		\
-		zombieHorde.cpp	\
 
+SRCS = 	main.cpp	\
+		Harl.cpp	\
 
-HEADER = Zombie.hpp
+HEADER = Harl.hpp	\
 
 PATH_OBJS = .objs
 
@@ -13,11 +12,11 @@ OBJS = $(addprefix $(PATH_OBJS)/, $(SRCS:.cpp=.o))
 
 RM = rm -rf
 
-NAME = zombie
+NAME = Harl
 
 all: $(NAME)
 
-$(PATH_OBJS)/%.o: %.cpp Makefile $(HEADER)
+$(PATH_OBJS)/%.o: %.cpp $(HEADER) Makefile
 				 @mkdir -p $(PATH_OBJS)
 				 $(CPPC) $(CPPFLAGS) -c $< -o $@
 

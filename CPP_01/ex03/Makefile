@@ -1,5 +1,5 @@
 CPPC = c++
-CPPFLAGS = -wall -werror -std=c++98
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
 
 SRCS = 	main.cpp		\
 		Weapon.cpp		\
@@ -22,10 +22,10 @@ all: $(NAME)
 
 $(PATH_OBJS)/%.o: %.cpp Makefile $(HEADER)
 				 @mkdir -p $(PATH_OBJS)
-				 $(CPPC) $(CPPCFLAGS) -c $< -o $@
+				 $(CPPC) $(CPPFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-		 $(CPPC) $(OBJS) -o $(NAME)
+		 $(CPPC) $(CPPFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 		$(RM) $(PATH_OBJS)

@@ -1,11 +1,37 @@
 #include <iostream>
 #include <fstream>
-#include <filesystem>
 
 void	ft_replace(std::string File_name, std::string s1, std::string s2)
 {
-	std::ifstream ifs(File_name);
+	std::ifstream 	ifs(File_name);
+	if (!ifs.is_open())
+	{
+		std::cerr << "Infile is not valid" << std::endl;
+		exit(EXIT_FAILURE);
+	}
 
+	std::string		File_name_replace = File_name + ".replace";
+	std::ofstream 	ofs(File_name_replace);
+	if (!ofs.is_open())
+	{
+		std::cerr << "Outfile is not valid" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+	std::string 	str;
+	while (std::getline(ifs, str))
+	{
+		if (!s1.empty())
+		{
+			for (size_t i = str.find(s1); i != std::string::npos; i = str.find(s1, i)){
+				str.erase(i, s1.length());
+				str.insert(i, s2);
+				i += s2.size();
+			}
+		}
+		ofs << str;
+		if (!ifs.eof())
+			ofs << std::endl;
+	}
 }
 
 int main(int ac, char **av)
@@ -13,14 +39,9 @@ int main(int ac, char **av)
 	if (ac == 4)
 		ft_replace(av[1], av[2], av[3]);
 	else
-		std::cerr << "Input invalid" << std::endl;
+	{
+		std::cerr << "Usage: ./sed [filename] [string_to_erase] [string_to_insert]"<< std::endl;
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
 }
-
-
-//	std::ifstream ifs("integer");
-//	unsigned int dst = 8;
-//	unsigned int dst2 = 16;
-//	ifs >> dst >> dst2;
-//
-//	std::cout << dst << " " << dst2 << std::endl;
-//	ifs.close();
