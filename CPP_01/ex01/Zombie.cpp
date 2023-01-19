@@ -2,7 +2,7 @@
 
 Zombie::Zombie()
 {
-	_name = "Bob";
+
 }
 
 Zombie::~Zombie()

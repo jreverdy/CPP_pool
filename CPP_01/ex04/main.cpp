@@ -9,7 +9,6 @@ void	ft_replace(std::string File_name, std::string s1, std::string s2)
 		std::cerr << "Infile is not valid" << std::endl;
 		exit(EXIT_FAILURE);
 	}
-
 	std::string		File_name_replace = File_name + ".replace";
 	std::ofstream 	ofs(File_name_replace);
 	if (!ofs.is_open())
