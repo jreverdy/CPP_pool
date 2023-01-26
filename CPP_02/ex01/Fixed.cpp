@@ -14,7 +14,7 @@ Fixed::Fixed(const int nbr)
 Fixed::Fixed(const float nbr)
 {
 	std::cout << "float constructor called" << std::endl;
-	_rawBits = roundf((float(nbr) * (float)(1 << _bits)));
+	_rawBits = roundf(nbr * (1 << _bits));
 }
 
 Fixed::Fixed(const Fixed &rhs)

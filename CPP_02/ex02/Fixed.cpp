@@ -1,43 +1,48 @@
 #include "Fixed.hpp"
 
-//constructor
+//constructors
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
+	_rawBits = 0;
 }
 
 Fixed::Fixed(const int nbr)
 {
-	std::cout << "int constructor called" << std::endl;
 	_rawBits = nbr * (1 << _bits);
 }
 
 Fixed::Fixed(const float nbr)
 {
-	std::cout << "float constructor called" << std::endl;
-	_rawBits = roundf((float(nbr) * (float)(1 << _bits)));
+	_rawBits = roundf(nbr * (1 << _bits));
 }
 
 Fixed::Fixed(const Fixed &rhs)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = rhs;
 }
 
 //destructor
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &rhs)
 {
-	std::cout << "Copy assignement operator called" << std::endl;
 	_rawBits = rhs._rawBits;
 	return(*this);
 }
 
 //Member functions
+void	Fixed::setRawBits(int const raw)
+{
+	this->_rawBits = raw;
+}
+
+int Fixed::getRawBits()const
+{
+	return(this->_rawBits);
+}
+
 float	Fixed::toFloat( void ) const
 {
 	return ((float)_rawBits / (float)(1 << _bits));
@@ -71,7 +76,7 @@ bool	Fixed::operator<=(const Fixed &rhs)
 
 bool	Fixed::operator==(const Fixed &rhs)
 {
-	return(_rawBits == rhs._rawBits)
+	return(_rawBits == rhs._rawBits);
 }
 
 bool	Fixed::operator!=(const Fixed &rhs)
@@ -80,8 +85,88 @@ bool	Fixed::operator!=(const Fixed &rhs)
 }
 
 //Arithmetic operators
+Fixed	Fixed::operator+(const Fixed &rhs)
+{
+	return (this->_rawBits + rhs._rawBits);
+}
 
+Fixed	Fixed::operator-(const Fixed &rhs)
+{
+	return (this->_rawBits - rhs._rawBits);
+}
 
+Fixed	Fixed::operator*(const Fixed &rhs)
+{
+	return (toFloat() * rhs.toFloat());
+}
+
+Fixed	Fixed::operator/(const Fixed &rhs)
+{
+	return (toFloat() / rhs.toFloat());
+}
+
+//increment
+Fixed	&Fixed::operator++(void)
+{
+	_rawBits += 1;
+	return (*this);
+}
+
+Fixed	&Fixed::operator--(void)
+{
+	_rawBits -= 1;
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int n)
+{
+	Fixed tmp;
+	(void)n;
+
+	tmp._rawBits = _rawBits;
+	_rawBits += 1;
+	return (tmp);
+}
+Fixed	Fixed::operator--(int n)
+{
+	Fixed tmp;
+	(void)n;
+
+	_rawBits -= 1;
+	return (tmp);
+}
+
+const Fixed   &Fixed::min(Fixed &f1, Fixed &f2)
+{
+	if (f1._rawBits < f2._rawBits)
+		return (f1);
+	else
+		return (f2);
+}
+
+const Fixed   &Fixed::min(const Fixed &f1, const Fixed &f2)
+{
+	if (f1._rawBits < f2._rawBits)
+		return (f1);
+	else
+		return (f2);
+}
+
+const Fixed   &Fixed::max(Fixed &f1, Fixed &f2)
+{
+	if (f1._rawBits > f2._rawBits)
+		return (f1);
+	else
+		return (f2);
+}
+
+const Fixed   &Fixed::max(const Fixed &f1, const Fixed &f2)
+{
+	if (f1._rawBits > f2._rawBits)
+		return (f1);
+	else
+		return (f2);
+}
 
 std::ostream	&operator<<(std::ostream& os, const Fixed& dt)
 {
