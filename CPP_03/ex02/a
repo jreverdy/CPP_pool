@@ -1,0 +1,208 @@
+---------ClapTrap---------
+
+constructor called
+ClapTrap  attacks bobi causing one point of damage
+9
+1
+ClapTrap  attacks bobi causing one point of damage
+8
+2
+ClapTrap loki take 5 points of damage, he has now 5 left...
+5
+ClapTrap loki been repaired by 2 , he have now 7points of life
+7
+10
+ClapTrap  attacks popi causing one point of damage
+ClapTrap  attacks popi causing one point of damage
+ClapTrap  attacks popi causing one point of damage
+ClapTrap  attacks popi causing one point of damage
+ClapTrap  attacks popi causing one point of damage
+ClapTrap  attacks popi causing one point of damage
+ClapTrap has no energy, he cannot attack
+10
+0
+Destructor called
+
+
+---------ScavTrap---------
+
+Default constructor called from ClapTrap
+Constructor called from ScavTrap
+ScavTrap  attacks bobi causing one point of damage
+49
+21
+ScavTrap  attacks bobi causing one point of damage
+48
+22
+ScavTrap Billy take 50 points of damage, he has now 50 left...
+50
+100
+ScavTrap has now entered Gate Keeper mode
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap  attacks popi causing one point of damage
+ScavTrap cannot be repaired, he has no energy left...
+ScavTrap has no energy, he cannot attack
+100
+0
+Destructor called from ScavTrap
+Destructor called
+---------FragTrap---------
+
+Default constructor called from ClapTrap
+Construcor called from FragTrap
+FragTrap wants to do a high five, are you in ??[Yes/No]
+Congratulations... You made FragTrap super sad
+
+FragTrap  attacks bobi causing one point of damage
+98
+31
+FragTrap  attacks bobi causing one point of damage
+97
+32
+FragTrap Billy take 50 points of damage, he has now 50 left...
+50
+100
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap  attacks popi causing one point of damage
+FragTrap has no energy, he cannot attack
+100
+0
+Destructor called from ScavTrap
+Destructor called

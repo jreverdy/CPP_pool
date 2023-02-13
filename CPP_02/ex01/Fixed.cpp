@@ -2,7 +2,7 @@
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
+    std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int nbr)
