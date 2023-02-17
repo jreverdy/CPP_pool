@@ -1,4 +1,4 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
 AForm::AForm(std::string str, const int gradeSigned, const int gradeExec) : _name(str), _signed(0), _gradeSigned(gradeSigned), _gradeExec(gradeExec)
 {
@@ -32,10 +32,12 @@ int     AForm::getGradeSigned()const
 {
     return (_gradeSigned);
 }
+
 int     AForm::getGradeExec()const
 {
     return (_gradeExec);
 }
+
 bool    AForm::getSigned()const
 {
     return(_signed);
@@ -43,13 +45,13 @@ bool    AForm::getSigned()const
 
 void        AForm::beSigned(Bureaucrat &bureaucrat)
 {
-    size_t i =  _gradeSigned;
 
-    if (bureaucrat.getGrade() <= i)
+    if (bureaucrat.getGrade() <= _gradeSigned)
         _signed = 1;
     else
         throw (AForm::GradeTooLowException());
 }
+
 
 std::ostream	&operator<<(std::ostream& os, const AForm& obj)
 {

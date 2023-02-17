@@ -7,12 +7,14 @@ SRCS = 	main.cpp					\
 		ShrubberyCreationForm.cpp	\
 		RobotomyRequestForm.cpp		\
 		PresidentialPardonForm.cpp	\
+		Intern.cpp					\
 
 HEADER = Bureaucrat.hpp				\
 		 AForm.hpp					\
 		 ShrubberyCreationForm.hpp	\
          RobotomyRequestForm.hpp	\
 		 PresidentialPardonForm.hpp	\
+		 Intern.hpp					\
 
 PATH_OBJS = .objs
 
@@ -20,7 +22,7 @@ OBJS = $(addprefix $(PATH_OBJS)/, $(SRCS:.cpp=.o))
 
 RM = rm -rf
 
-NAME = 28B
+NAME = Intern
 
 all: $(NAME)
 

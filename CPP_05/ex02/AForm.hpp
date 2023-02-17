@@ -22,7 +22,7 @@ public:
     public:
         virtual const char* what()const throw()
         {
-            return ("Required grade is too High, fix this !");
+            return ("You don't have the right for this form sorry !");
         }
 
     };
@@ -34,6 +34,14 @@ public:
             return ("Required grade is too Low, fix this !");
         }
     };
+    class FormNotSignedException : public std::exception
+    {
+        virtual const char* what()const throw()
+        {
+            return ("Form not signed !");
+        }
+    };
+
     AForm(const std::string str, const int gradeSigned, const int gradeExec);
     AForm(const AForm &rhs);
     AForm &operator=(const AForm &rhs);
@@ -44,7 +52,8 @@ public:
     int         getGradeExec()const;
     bool        getSigned()const;
 
-    void        beSigned(Bureaucrat &bureaucrat) = 0;
+    virtual void    execute(Bureaucrat const &executor)const = 0;
+    void            beSigned(Bureaucrat &bureaucrat);
 };
 
 std::ostream	&operator<<(std::ostream& os, const AForm& obj);
