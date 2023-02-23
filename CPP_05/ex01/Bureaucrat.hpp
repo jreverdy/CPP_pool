@@ -10,6 +10,8 @@ class Bureaucrat
 {
 private:
 
+    void        upGrade();
+    void        downGrade();
     Bureaucrat &operator=(const Bureaucrat &rhs);
     std::string const   _name;
     size_t              _grade;
@@ -42,8 +44,7 @@ class   GradeTooLowException : public std::exception
     size_t      getGrade()const;
 
     void        signForm(Form &form);
-    void        upGrade();
-    void        downGrade();
+
 };
 
 std::ostream	&operator<<(std::ostream& os, const Bureaucrat& obj);

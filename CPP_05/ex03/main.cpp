@@ -110,6 +110,7 @@ int main()
         form = stagiaire.makeForm("Robotomy request", "Bender");
         a.signForm(*form);
         a.executeForm(*form);
+        delete form;
     }
     catch (std::exception &e)
     {
@@ -125,6 +126,7 @@ int main()
         form = stagiaire.makeForm("Shrubbery creation", "Bender");
         a.signForm(*form);
         a.executeForm(*form);
+        delete form;
     }
     catch (std::exception &e)
     {
@@ -140,6 +142,7 @@ int main()
         form = stagiaire.makeForm("Presidential pardon", "Bender");
         a.signForm(*form);
         a.executeForm(*form);
+        delete form;
     }
     catch (std::exception &e)
     {
@@ -155,6 +158,7 @@ int main()
         form = stagiaire.makeForm("Invalid name", "Bender");
         a.signForm(*form);
         a.executeForm(*form);
+        delete form;
     }
     catch (std::exception &e)
     {
