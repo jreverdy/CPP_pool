@@ -63,6 +63,14 @@ public:
         return(_tab[n]);
     }
 
+    const T &operator[](int n)const
+    {
+        if (isInvalid(n)) {
+            throw(InvalidIndexException());
+        }
+        return(_tab[n]);
+    }
+
     class InvalidIndexException : public std::exception
     {
         virtual const char* what()const throw()
@@ -82,13 +90,5 @@ public:
     }
 
 };
-
-template <typename T>
-std::ostream	&operator<<(std::ostream &os, Array<T> const &tab)
-{
-    for (size_t i = 0; i < tab.size(); ++i)
-        os << tab[i] << " | ";
-    return (os);
-}
 
 #endif
