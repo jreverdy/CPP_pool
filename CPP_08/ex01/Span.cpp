@@ -4,12 +4,6 @@ Span::Span(unsigned int N) : _maxSize(N)
 {
     if (_maxSize < 2)
         throw(WrongParameter());
-    /*srand(time(0));
-    for (unsigned int i = 0; i < _size; i++)
-    {
-        int nb = rand()%100 + 1;
-        _tab.insert(nb);
-    }*/
 }
 
 Span::Span(const Span &rhs)
@@ -51,6 +45,9 @@ void Span::addNumber(unsigned int nb)
 
 unsigned int Span::longestSpan()
 {
+    if (_tab.size() < 2) {
+        throw (WrongParameter());
+    }
     unsigned int res = (*(--_tab.end()) - *_tab.begin());
     return (res);
 }
