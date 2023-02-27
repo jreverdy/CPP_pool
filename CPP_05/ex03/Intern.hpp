@@ -25,7 +25,8 @@ public:
     virtual const char* what()const throw()
     {
         return ("Form not found !");
-    }};
+    }
+};
 
     AForm   *makeForm(std::string FormName, std::string target);
 };
