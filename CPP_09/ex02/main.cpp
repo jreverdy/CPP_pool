@@ -1,12 +1,17 @@
 #include "PmergeMe.hpp"
 
+void vectorMergeSort(std::vector<int> &arr, int begin, int end, int mid_size);
+void vectorMerge(std::vector<int> &arr, int begin, int middle, int end);
+void dequeMergeSort(std::deque<int> &arr, int begin, int end, int mid_size);
+void dequeMerge(std::deque<int> &arr, int begin, int middle, int end);
+
 void    printVector(std::vector<int> const &input)
 {
     std::copy(input.begin(), input.end(), std::ostream_iterator<int>(std::cout, " "));
     std::cout << std::endl;
 }
 
-void    printList(std::list<int> const &input)
+void    printDeque(std::deque<int> const &input)
 {
     std::copy(input.begin(), input.end(), std::ostream_iterator<int>(std::cout, " "));
     std::cout << std::endl;
@@ -45,21 +50,52 @@ int check_int(char *av)
     if (nb < INT_MIN || nb > INT_MAX)
     {
         if (nb < INT_MIN)
-            std::cerr << "error: input underflow" << std::endl;
+            throw Underflow();
         else
-            std::cerr << "error: input overflow" << std::endl;
+           throw Overflow();
         return (-1);
     }
     return (0);
 }
 
-void parse_args(int ac, char **av)
+void    printAndSort(PmergeMe &inst)
+{
+    std::cout << "vector: ";
+    printVector(inst.getVector());
+    std::cout << "deque: ";
+    printDeque(inst.getDeque());
+
+    std::vector<int> tmp_vector(inst.getVector());
+    std::deque<int> tmp_deque(inst.getDeque());
+
+    struct timeval startVec, endVec;
+    double execTimeVec;
+
+    gettimeofday(&startVec, NULL);
+    vectorMergeSort(tmp_vector, 0, inst.getVector().size() - 1, inst.getVector().size() / 2);
+    gettimeofday(&endVec, NULL);
+    execTimeVec = static_cast<double>((endVec.tv_sec - startVec.tv_sec) * 1000000 + (endVec.tv_usec - startVec.tv_usec));
+    std::cout << "sorted vector: ";
+    printVector(tmp_vector);
+
+    struct timeval startDeque, endDeque;
+    double execTimeDeque;
+
+    gettimeofday(&startDeque, NULL);
+    dequeMergeSort(tmp_deque, 0, inst.getDeque().size() - 1, inst.getDeque().size() / 2);
+    gettimeofday(&endDeque, NULL);
+    execTimeDeque = static_cast<double>((endDeque.tv_sec - startDeque.tv_sec) * 1000000 + (endDeque.tv_usec - startDeque.tv_usec));
+    std::cout << "sorted deque: ";
+    printDeque(tmp_deque);
+
+    std::cout << "Time to process a range of " << inst.getVector().size() << " elements with std::vector : " << execTimeVec << " µs" << std::endl;
+    std::cout << "Time to process a range of " << inst.getDeque().size() << " elements with std::deque : " << execTimeDeque << " µs" << std::endl;
+}
+
+void    parse_args(int ac, char **av)
 {
     if (check_duplicate_numbers(ac, av) == -1)
-    {
-        std::cerr << "error: You cannot have a duplicate" << std::endl;
-        return ;
-    }
+        throw Duplicate();
     int i = 1;
     PmergeMe inst;
     while (av[i])
@@ -70,21 +106,14 @@ void parse_args(int ac, char **av)
         while (av[i][j])
         {
             if (!isdigit(av[i][j]))
-            {
-                std::cerr << "error: invalid input detected -> [" << av[i][j] << "]" << std::endl;
-                return ;
-            }
+                throw InvalidInput();
             else
                 j++;
         }
         inst.set(atoi(av[i]));
         i++;
     }
-    std::cout << "vector: ";
-    printVector(inst.getVector());
-    std::cout << "list: ";
-    printList(inst.getList());
-
+    printAndSort(inst);
 }
 
 int main(int ac, char **av)
@@ -94,5 +123,12 @@ int main(int ac, char **av)
         std::cerr << "Usage: ./PmergeMe [list of integers]" << std::endl;
         return (-1);
     }
-    parse_args(ac, av);
+    try
+    {
+        parse_args(ac, av);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 }
