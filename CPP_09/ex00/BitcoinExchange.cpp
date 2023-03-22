@@ -27,6 +27,17 @@ BitcoinExchange::BitcoinExchange()
     }
 }
 
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& obj) {
+
+    *this = obj;
+}
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& obj) {
+
+    this->data = obj.data;
+    return *this;
+}
+
 void BitcoinExchange::printMap()
 {
     std::map<std::string, float>::iterator end = data.end();
@@ -49,14 +60,16 @@ float BitcoinExchange::getRate(std::string & key) {
         throw TooOldDate();
 
     std::map<std::string, float>::iterator it = data.find(key);
-    if (it != data.end())
+
+    if (it != data.end()) {
         return it->second;
-    else
-    {
+    } else {
         // return data[I] where I is the first value >= key
         it = this->data.lower_bound(key);
+
         // to get the previous value
         it--;
+        
         return it->second;
     }
 }

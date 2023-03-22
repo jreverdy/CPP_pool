@@ -6,23 +6,35 @@ float isCoinValid(std::string value) {
 
     char    *end;
 
-    long int    int_input = std::strtol(value.c_str(), &end, 10);
-    if (int_input > 1000)
-        throw CoinUpperBound();
-    if (int_input < 0)
-        throw CoinLowerBound();
-    if (*end == 0)
-        return (static_cast<float>(int_input));
+    int i = 0;
+    while (value[i] == ' ')
+        i++;
+    if (value[i] <= 58 || value[i] >= 48)
+    {
+        while (value[i])
+        {
+            if (value[i] == ' ')
+                throw WrongValueFormat();
+            i++;
+        }
 
-    float       float_input = std::strtof(value.c_str(), &end);
-    if (float_input > 1000)
-        throw CoinUpperBound();
-    if (float_input < 0)
-        throw CoinLowerBound();
-    if (*end == 0)
-        return (float_input);
+        long int    int_input = std::strtol(value.c_str(), &end, 10);
+        if (int_input > 1000)
+            throw CoinUpperBound();
+        if (int_input < 0)
+            throw CoinLowerBound();
+        if (*end == 0)
+            return (static_cast<float>(int_input));
 
-    throw std::invalid_argument("Error: non-numerical value: ");
+        float       float_input = std::strtof(value.c_str(), &end);
+        if (float_input > 1000)
+            throw CoinUpperBound();
+        if (float_input < 0)
+            throw CoinLowerBound();
+        if (*end == 0)
+            return (float_input);
+    } 
+    throw NonNumericalValuet();
 }
 
 int  countChar(std::string str, char c)
@@ -107,35 +119,39 @@ std::pair<std::string, float> parse_txt(std::string & input)
     return std::make_pair(date, valid_coin);
 }
 
-int main(int ac, char **av)
+bool is_empty(std::ifstream& pFile)
 {
-    if (ac != 2)
+    return pFile.peek() == std::ifstream::traits_type::eof();
+}
+
+int main(int ac, char **av) {
+    
+    if (ac == 2)
     {
-        std::cerr << "Usage: ./btc [filename]" << std::endl;
-        return -1;
-    }
-    std::ifstream input(av[1]);
-    std::string buf;
+        std::ifstream input(av[1]);
+        std::string buf;
 
-    if (!input.is_open()) {
-        std::cout << "File not found" << std::endl;
-        return -1;
-    }
-
-    BitcoinExchange exchange_db;
-
-    getline(input, buf);
-    while (getline(input, buf))
-    {
-        std::pair<std::string, float> line_values;
-        try
-        {
-            line_values = parse_txt(buf);
-            displayExchangeRate(exchange_db.getRate(line_values.first), line_values);
+        if (!input.is_open()) {
+            std::cout << "File not found" << std::endl;
+            return -1;
         }
-        catch(Exception &e)
-        {
-            std::cerr << e.what() << " -> " << buf << std::endl;
+
+        if (is_empty(input)) {
+            std::cout << "Empty file" << std::endl;
+            return -1;
+        }
+
+        BitcoinExchange exchange_db;
+
+        getline(input, buf);
+        while (getline(input, buf)) {
+            std::pair<std::string, float> line_values;
+            try {
+                line_values = parse_txt(buf);
+                displayExchangeRate(exchange_db.getRate(line_values.first), line_values);
+            } catch(Exception &e) {
+                std::cerr << e.what() << " -> " << buf << std::endl;
+            }
         }
     }
 }

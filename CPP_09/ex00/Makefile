@@ -1,34 +1,29 @@
-CPPC = c++
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98
+CC = c++
+FLAGS = -Wall -Wextra -Werror
 
-SRCS = 	main.cpp				\
-		BitcoinExchange.cpp		\
+SRCS =	main.cpp \
+		BitcoinExchange.cpp
 
-HEADER = BitcoinExchange.hpp	\
+INCS =	BitcoinExchange.hpp
 
-PATH_OBJS = .objs
+OBJS = $(SRCS:.cpp=.o)
 
-OBJS = $(addprefix $(PATH_OBJS)/, $(SRCS:.cpp=.o))
-
-RM = rm -rf
+%.o : %.cpp $(INCS)
+	$(CC) $(FLAGS) -std=c++98 -c $< -o $@
 
 NAME = btc
 
-all: $(NAME)
+all : $(NAME)
 
-$(PATH_OBJS)/%.o: %.cpp $(HEADER) Makefile
-				 @mkdir -p $(PATH_OBJS)
-				 $(CPPC) $(CPPFLAGS) -c $< -o $@
+$(NAME) : $(OBJS)
+	$(CC) $(FLAGS) -I $(INCS) -std=c++98 -o $(NAME) $(OBJS)
 
-$(NAME): $(OBJS)
-		 $(CPPC) $(CPPFLAGS) $(OBJS) -o $(NAME)
+clean :
+	rm -f $(OBJS)
 
-clean:
-		$(RM) $(PATH_OBJS)
+fclean : clean
+	rm -f $(NAME)
 
-fclean: clean
-		$(RM) $(NAME)
+re : fclean all
 
-re: fclean all
-
-.PHONY: all clean fclean re
+.PHONY : all clean fclean re
