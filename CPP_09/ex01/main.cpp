@@ -49,7 +49,7 @@ int main(int ac, char **av) {
     }
     else
     {
-        std::cerr << "Usage: ./RPN [numbers and operations]" << std::endl;
+        std::cerr << "Usage: ./RPN [operands and operators]" << std::endl;
         return -1;
     }
     return 1;

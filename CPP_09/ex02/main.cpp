@@ -118,7 +118,7 @@ void    parse_args(int ac, char **av)
 
 int main(int ac, char **av)
 {
-    if (ac < 1)
+    if (ac < 3)
     {
         std::cerr << "Usage: ./PmergeMe [list of integers]" << std::endl;
         return (-1);

@@ -20,12 +20,14 @@ PmergeMe::~PmergeMe() {}
 
 /* == VECTOR MERGE-INSERT-SORT == */
 
-void    vectorInsertionSort(std::vector<int> &arr, int begin, int end) {
-
-    for (int i = begin; i < end; i++) {
+void    vectorInsertionSort(std::vector<int> &arr, int begin, int end)
+{
+    for (int i = begin; i < end; i++)
+    {
         int tmp = arr[i + 1];
         int j = i + 1;
-        while (j > begin && arr[j - 1] > tmp) {
+        while (j > begin && arr[j - 1] > tmp)
+        {
             arr[j] = arr[j - 1];
             j--;
         }
@@ -33,7 +35,8 @@ void    vectorInsertionSort(std::vector<int> &arr, int begin, int end) {
     }
 }
 
-void    vectorMerge(std::vector<int> &arr, int begin, int middle, int end) {
+void    vectorMerge(std::vector<int> &arr, int begin, int middle, int end)
+{
 
     int left_size = middle - begin + 1;
     int right_size = end - middle;
@@ -53,11 +56,13 @@ void    vectorMerge(std::vector<int> &arr, int begin, int middle, int end) {
 
     while (i < left_size && j < right_size)
     {
-        if (tmp_left[i] <= tmp_right[j]) {
+        if (tmp_left[i] <= tmp_right[j])
+        {
             arr[k] = tmp_left[i];
             i++;
         }
-        else {
+        else
+        {
             arr[k] = tmp_right[j];
             j++;
         }
@@ -79,9 +84,8 @@ void    vectorMerge(std::vector<int> &arr, int begin, int middle, int end) {
     return ;
 }
 
-void    vectorMergeSort(std::vector<int> &arr, int begin, int end, int mid_size) {
-
-
+void    vectorMergeSort(std::vector<int> &arr, int begin, int end, int mid_size)
+{
     if (end - begin > mid_size)
     {
         int middle = (begin + end) / 2;
@@ -98,10 +102,12 @@ void    vectorMergeSort(std::vector<int> &arr, int begin, int end, int mid_size)
 
 void    dequeInsertionSort(std::deque<int> &arr, int begin, int end) {
 
-    for (int i = begin; i < end; i++) {
+    for (int i = begin; i < end; i++)
+    {
         int tmp = arr[i + 1];
         int j = i + 1;
-        while (j > begin && arr[j - 1] > tmp) {
+        while (j > begin && arr[j - 1] > tmp)
+        {
             arr[j] = arr[j - 1];
             j--;
         }
@@ -129,11 +135,13 @@ void    dequeMerge(std::deque<int> &arr, int begin, int middle, int end) {
 
     while (i < left_size && j < right_size)
     {
-        if (tmp_left[i] <= tmp_right[j]) {
+        if (tmp_left[i] <= tmp_right[j])
+        {
             arr[k] = tmp_left[i];
             i++;
         }
-        else {
+        else
+        {
             arr[k] = tmp_right[j];
             j++;
         }
@@ -155,9 +163,8 @@ void    dequeMerge(std::deque<int> &arr, int begin, int middle, int end) {
     return ;
 }
 
-void    dequeMergeSort(std::deque<int> &arr, int begin, int end, int mid_size) {
-
-
+void    dequeMergeSort(std::deque<int> &arr, int begin, int end, int mid_size)
+{
     if (end - begin > mid_size)
     {
         int middle = (begin + end) / 2;

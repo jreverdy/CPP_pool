@@ -61,17 +61,19 @@ float BitcoinExchange::getRate(std::string & key) {
 
     std::map<std::string, float>::iterator it = data.find(key);
 
-    if (it != data.end()) {
+    if (it != data.end())
+    {
         return it->second;
-    } else {
+    }
+    else
+    {
         // return data[I] where I is the first value >= key
         it = this->data.lower_bound(key);
-
         // to get the previous value
         it--;
-        
         return it->second;
     }
 }
 
-BitcoinExchange::~BitcoinExchange() {}
+BitcoinExchange::~BitcoinExchange()
+{}

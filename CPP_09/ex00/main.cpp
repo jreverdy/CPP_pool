@@ -17,7 +17,6 @@ float isCoinValid(std::string value) {
                 throw WrongValueFormat();
             i++;
         }
-
         long int    int_input = std::strtol(value.c_str(), &end, 10);
         if (int_input > 1000)
             throw CoinUpperBound();
@@ -25,7 +24,6 @@ float isCoinValid(std::string value) {
             throw CoinLowerBound();
         if (*end == 0)
             return (static_cast<float>(int_input));
-
         float       float_input = std::strtof(value.c_str(), &end);
         if (float_input > 1000)
             throw CoinUpperBound();
@@ -79,6 +77,8 @@ void  isDateValid(std::string key)
 
     if (!isNumeric(y) || !isNumeric(d) || !isNumeric(m))
         throw DateHasNonNumericChar();
+    if (y.size() != 4 || m.size() != 2 || d.size() != 2)
+        throw DateWrongFormat();
 
     int year = atoi(y.c_str());
     int day = atoi(d.c_str());
@@ -100,7 +100,8 @@ void  isDateValid(std::string key)
 }
 
 
-void displayExchangeRate(float rate, std::pair<std::string, float> & line_values) {
+void displayExchangeRate(float rate, std::pair<std::string, float> & line_values)
+{
     std::cout << line_values.first << " => " << line_values.second << " = " << line_values.second * rate << std::endl;
 }
 
@@ -132,10 +133,9 @@ int main(int ac, char **av) {
         std::string buf;
 
         if (!input.is_open()) {
-            std::cout << "File not found" << std::endl;
+            std::cout << "File not found or corrupted" << std::endl;
             return -1;
         }
-
         if (is_empty(input)) {
             std::cout << "Empty file" << std::endl;
             return -1;
@@ -144,14 +144,23 @@ int main(int ac, char **av) {
         BitcoinExchange exchange_db;
 
         getline(input, buf);
-        while (getline(input, buf)) {
+        while (getline(input, buf))
+        {
             std::pair<std::string, float> line_values;
-            try {
+            try
+            {
                 line_values = parse_txt(buf);
                 displayExchangeRate(exchange_db.getRate(line_values.first), line_values);
-            } catch(Exception &e) {
+            } catch(Exception &e)
+            {
                 std::cerr << e.what() << " -> " << buf << std::endl;
             }
         }
     }
+    else
+    {
+        std::cerr << "Usage: ./btc [file_name]" << std::endl;
+        return -1;
+    }
+    return 0;
 }
